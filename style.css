@@ -1,0 +1,935 @@
+/* BARVY */
+
+:root {   
+  --main-background: #F0EEE5;
+  --background-secondary: #FEF3E7;
+  --background-third: #DBBEAC;
+  --background-fourth: #EBDACD;
+  --form-background: #DED0C1;
+  --text: #5C6A4B;
+  --transparent-thirty: rgba(240, 238, 229, 0.3);
+  --transparent-fifty: rgba(240, 238, 229, 0.5);
+  --transparent-seventy: rgba(240, 238, 229, 0.7);
+  --page-title: #F0EEE5;
+  --shadow: #43493C;
+  --hover: #F0B36A;
+  --button: #DCDAD1;
+  --toggle: #FFF7E8;
+  --icon: #F6B84B;
+  --alert-green: #128351;
+  --alert-red: #C12633;
+  --alert-orange: #F09440;
+}
+
+.dark-mode {
+  --main-background: #252D24;
+  --background-secondary: #43493C;
+  --background-third: #372E2E;
+  --background-fourth: #4A4141;
+  --form-background: #4F4841;;
+  --text: #E4D9C1;
+  --transparent-thirty: rgba(37, 45, 36, 0.3);
+  --transparent-fifty: rgba(37, 45, 36, 0.5);
+  --transparent-seventy: rgba(37, 45, 36, 0.7);
+  --page-title: #E4D9C1;
+  --hover: #A47741;
+  --button: #2C373E;
+  --toggle: #586F7C;
+  --icon: #FADFA8;
+  --alert-green: #279A67;
+  --alert-red: #DF3D4B;
+  --alert-orange: #DE9946;
+}
+
+/* OBECNÉ STYLY */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+*:focus {
+  outline: none;
+  border: none;
+}
+
+h1 {
+  color: var(--page-title);
+  text-shadow: var(--shadow) 0.5rem 0.5rem 1rem;
+  font-size: 3rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--text);
+  text-align: center;
+  color: var(--text);
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  padding: 0;
+  font-weight: 00;
+  text-transform: uppercase;
+  color: var(--text); 
+}
+
+h4 {
+  font-size: 1.75rem;
+  color: var(--text);
+}
+
+h5 {
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--text);
+}
+
+.p-medium {
+  font-weight: 500;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text)
+}
+
+/* HEADER - Responzivní menu */
+
+.header {
+  width: 100%;
+  position: relative;
+  bottom: calc(100vh - 4rem);
+}
+
+.navbar {
+  height: 4rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  background-color: var(--main-background);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h4 {
+  letter-spacing: 0.125rem;
+  font-style: italic;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-items {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: var(--transparent-seventy);
+  position: absolute;
+  top: 4rem;
+  left: -100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.nav-items.active{
+  left: 0;
+}
+
+.navbar a {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.navbar a:hover{
+  border-bottom: 1px solid var(--text);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-icon:hover {
+  cursor: pointer;
+}
+
+.menu-icon.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-icon.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 0.25rem;
+  border-radius: 2px;
+  margin: 5px 0;
+  background-color: var(--text);
+  transition: all 0.5s ease-in-out;
+}
+
+/* HERO SECTION - Úvodní video */
+
+.hero-section {
+  transform: translateY(4rem);
+}
+
+video {
+  object-fit: cover;
+  object-position: center;
+  height: 110%;
+  width: 100%;
+  border: none;
+  filter: grayscale(1);
+}
+
+.video-wrapper {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  margin: 0;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.video-overlay {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding: 4rem 1rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--transparent-thirty);
+}
+
+/* SEKCE 1 - O NÁS */
+
+#about-us {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--main-background);
+  padding: 1rem;
+}
+
+.about-window {
+  width: 100%;
+  max-width: 32rem;
+  padding: 1rem 1rem;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.about-text {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: calc(100vw - 4rem);
+  max-height: 30rem;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.8s ease-in-out;
+  transform-style: preserve-3d;
+}
+  
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  color: var(--text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-third);
+}
+
+.flip-card-front .fa-solid {
+  font-size: 3.5rem;
+}
+
+.flip-card-back {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-fourth);
+  transform: rotateY(180deg);
+}
+
+.activity-image-container {
+  height: calc(100vw - 4rem);
+  max-height: 30rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.activity-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+}
+
+.dark-mode .activity-image {
+  filter: brightness(0.8);
+}
+
+.activity-image:hover {
+  transform: scale(1.25);
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  gap: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.social-media a {
+  color: var(--text);
+  font-size: 2rem;
+}
+
+.social-media a:hover {
+  color: var(--hover);
+  font-size: 2rem;
+}
+
+/* SEKCE 2 - PŘIDEJ SE */
+
+#join-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--background-secondary);
+  background-size: cover;
+  padding: 1rem;
+}
+
+.join-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--background-fourth);
+  padding: 1rem;
+  max-width: 32rem;
+}
+
+.form-send {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.join-gallery {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.join-image-container {
+  height: calc(100vw - 4rem);
+  width: 100%;
+  overflow: hidden;
+}
+
+.join-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  transition: all 0.5s ease-in-out;
+}
+
+.dark-mode .join-image {
+  filter: brightness(0.8);
+}
+
+.join-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.join-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  background-color: var(--form-background);
+  width: 100%;
+  padding: 1rem;
+}
+
+form h6 {
+  text-align: left;
+}
+
+form p {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+form .fa-solid {
+  font-size: 1.25rem;
+}
+
+.fa-circle-check {
+  color: var(--alert-green);
+}
+
+.fa-circle-xmark {
+  color: var(--alert-red)
+}
+
+.fa-circle-exclamation {
+  color: var(--alert-orange);
+}
+
+#name-check, #email-check, #password-check, #confirm-password-check, #message-check {
+  display: none;
+}
+
+.name-alert, .email-alert, .password-alert, .confirm-password-alert, .message-counter, .form-alert {
+  display: none;
+  }
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-part {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.data-part p {
+  font-size: 0.85rem;
+}
+
+.data-part .fa-solid {
+  margin-left: 0.5rem;
+}
+
+.input-div {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  border: 2px solid var(--main-background);
+  background-color: var(--main-background);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin: 0.5rem 0;
+  width: calc(100% - 28px);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 2px solid var(--text);
+  color: var(--text);
+}
+
+input:disabled {
+  opacity: 0.5;
+  border: 2px solid var(--main-background);
+  background-color: var(--main-background);
+}
+
+.message-part {
+  width: 100%;
+}
+
+.message-part h6 {
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  height: 15rem;
+  width: 100%;
+  padding: 0.25rem;
+  border: 2px solid var(--main-background);
+  background-color: var(--main-background);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.message-check-div {
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.message-counter {
+  margin-bottom: 0;
+}
+
+.form-alert {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: left;
+  display: none;
+  gap: 0.5rem;
+}
+
+.form-alert .fa-solid {
+  margin-left: 0;
+}
+
+.form-submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  width: 100%;
+  border-top: 1px solid var(--text);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.submit {
+  background-color: var(--button);
+  max-width: 10rem;
+  border: none;
+  padding: 0.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.submit:focus {
+  border: none;
+  padding: 0.5rem;
+}
+
+.submit:focus .form-alert {
+  justify-content: start;
+}
+
+.submit:hover {
+  background-color: var(--hover) ;
+}
+
+/* FOOTER */
+  
+ footer {
+  color: var(--text);
+  position: relative;
+  height: 25vh;
+  background-image: url(./Images/panoramic-shot-bicycle-wheels-riding-ground_baw.jpg);
+  background-size: cover;
+  background-position: center;
+ }
+
+ footer h5 {
+  font-style: italic;
+  letter-spacing: 1px;
+ }
+
+ .footer-content {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1.5rem;
+  background-color: var(--transparent-fifty);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.footer-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+footer a {
+  font-weight: 500;
+  height: 1.5rem;
+}
+
+footer a:hover {
+  border-bottom: 1px solid var(--text);
+}
+
+/* OVLÁDACÍ BUTTONY */
+
+/* Dark/light-mode */
+
+.mode-button {
+  height: 2rem;
+  width: 3.5rem;
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--button);
+  font-weight: 500;
+}
+
+.mode-button:hover {
+  cursor: pointer;
+}
+
+.toggle {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+  color: var(--icon);
+  background-color: var(--toggle);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Button pro vrácení na začátek po odscrollování */
+
+.scroll-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--button);
+  color: var(--text);
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  border: none;
+  display: none;
+}
+
+.scroll-button:hover {
+  background-color: var(--hover);
+  cursor: pointer;
+  border: none;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  /* OBECNÉ STYLY */
+
+  h1 {
+    font-size: 4rem;
+    text-align: right;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+
+  /* HEADER - Responzivní menu */
+
+  .header {
+    bottom: calc(100vh - 5rem);
+  }
+
+  .navbar {
+    height: 5rem;
+    padding: 0 2rem;
+  }
+
+  .nav-menu {
+    gap: 2rem;
+  }
+
+  .nav-items {
+      flex-direction: row;
+      position: static;
+      gap: 1.5rem;
+      background-color: transparent;
+  }
+
+  .menu-icon {
+      display: none;
+  }
+
+  /* HERO SECTION - Úvodní video */
+
+  .hero-section {
+    transform: translateY(5rem);
+  }
+
+  .video-wrapper {
+    height: calc(100vh - 5rem);
+  }
+
+  .video-overlay {
+    justify-content: end;
+    padding: 4rem 2rem;
+  }
+
+  /* SEKCE 1 - O NÁS */
+
+  #about-us {
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  .about-window {
+    gap: 1.5rem;
+    max-width: 62rem;
+  }
+
+  .activity-div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .activity-div:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+
+  .flip-card {
+    width: calc(100vw / 2 - 3rem);
+    height: calc(100vw / 2 - 3rem);
+    max-width: 30rem;
+  }
+
+  .flip-card-front {
+    gap: 1rem;
+  }
+
+  .flip-card-front .fa-solid {
+    font-size: 4rem;
+  }
+
+  .activity-image-container {
+    width: calc(100vw / 2 - 3rem);
+    height: calc(100vw / 2 - 3rem);
+    max-width: 30rem;
+  }
+
+  /* SEKCE 2 - PŘIDEJ SE */
+
+    #join-us {
+      padding: 2rem;
+    }
+
+    .join-window {
+        max-width: 62rem;
+    }
+
+    .join-gallery {
+        flex-direction: row;
+    }
+
+    .join-image-container {
+        height: calc(50vw - 2rem);
+        max-height: 30rem;
+    }
+    
+    form {
+        flex-direction: column;
+    }
+
+    .form-inputs {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .form-submit {
+      flex-direction: row;
+      align-items: center;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+  /* OBECNÉ STYLY */
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  /* SEKCE 1 - O NÁS */
+
+  #about-us {
+    padding: 4rem;
+  }
+
+  .about-window {
+    max-width: 92rem;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .about-text {
+    max-width: 80rem;
+    gap: 1.5rem;
+  }
+
+  .activities {
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .activity-div {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3);
+    height: 100%;
+    max-height: 60rem;
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
+  
+  .activity-div:nth-child(2) {
+    flex-direction: column-reverse;
+  }
+  
+  .flip-card {
+    width: 100%;
+    height: calc((100vw - 10rem)/3);
+  }
+
+  .flip-card-back {
+    padding: 2rem;
+  }
+  
+  .activity-image-container {
+    width: 100%;
+    height: calc((100vw - 10rem)/3);
+  }
+
+  /* SEKCE 2 - PŘIDEJ SE */
+
+  #join-us {
+    padding: 4rem;
+  }
+
+  .join-window {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .join-gallery {
+      flex-direction: c;
+      width: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-direction: row;
+  }
+}
